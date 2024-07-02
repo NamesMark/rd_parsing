@@ -38,18 +38,23 @@ http://example.com, https://secure.website.org, http://sub.domain.co, www.redire
 
 8. Також не забудьте про “path” та “param”:
 https://my.site.com/path/to/resource?param1=value1&param2=value2, http://www.files.net/files.zip, https://example.co.in/api/v1/resource та https://another-site.org/downloads?query=search#anchor
+
+((?<protocol>[a-z]+)(:\/\/)|(www\.))(?<domain>[a-zA-Z0-9\.\-]+)\/?(?<path>[a-zA-Z0-9\/\.]+)(\?(([a-zA-Z0-9]*=)(?<param>[a-zA-Z0-9]*)&?)+)?#?(?<anchor>[a-zA-Z0-9]*)?
  
 9. Шістнадцяткові числа з'являються в різних контекстах:
 0x1A3F, 0xBEEF, 0xDEADBEEF, 0x123456789ABCDEF, 0xA1B2C3 та 0x0
 
+0x[0-9A-F]+
 
 10. Також попрактикуйте такий формат: 
 #FF5733, #C70039, #900C3F, #581845, #DAF7A6 та #FFC300
 
+#(?<rgb>[0-9A-F]{2}){3}
 
 11. Коди кольорів RGB: 
 rgb(255, 99, 71), rgba(255, 99, 71, 0.5)
 
+rgba?\((?<red>\d+)\D*?(?<green>\d+)\D*?(?<blue>\d+)\D*?(?<alpha>0.\d+)?\)
 
 12. Номери соціального страхування:
 123-45-6789, 987-65-4321, 111-22-3333, 555-66-7777 та  999-88-7777
@@ -57,6 +62,8 @@ rgb(255, 99, 71), rgba(255, 99, 71, 0.5)
 13. Також номери соціального страхування можуть бути записані ще в такому форматі:
 123 45 6789 або 123456789
 
+На 12 та 13:
+\d{3}\D?\d{2}\D?\d{4}
 
 14. Пошукайте кілька випадкових речень для порівняння:
 The quick brown fox jumps over the lazy dog.
@@ -64,6 +71,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Jack and Jill went up the hill to fetch a pail of water.
 She sells seashells by the seashore.
 
+(\w+.?\s?)+\.
 
 15. І на завершення, давайте додамо деякі спеціальні символи та цифри:
 1234567890, !@#$%^&*()_+-=[]{}|;':",./<>?, 3.14159, 42 та -273.15
+
+- Числа:
+(?<any_number>\-?\d+\.?\d+)
+
+- Спецсимволи:
+Можна зметчити ось так: \D+
+Але якщо необхідно кожен окремо, то:
+!@#\$%\^&\*\(\)_\+\-=\[\]\{\}\|;':",\.\/<>\?,
