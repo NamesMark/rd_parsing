@@ -1,0 +1,10 @@
+
+/.idea/
+/.vscode/
+/*.iml
+.DS_Store
+
+/target/
+Cargo.lock
+.env
+/.venv/
