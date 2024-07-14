@@ -8,4 +8,4 @@
 Cargo.lock
 .env
 /.venv/
-.html
+*.html
